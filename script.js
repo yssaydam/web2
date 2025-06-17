@@ -1,0 +1,1 @@
+(function () { document.addEventListener("keydown", function (e) { if (e.key === "F12" || (e.ctrlKey && e.shiftKey && ["I", "J", "C", "U"].includes(e.key.toUpperCase()))) { e.preventDefault(); alert("Yetkisiz işlem engellendi.") } }); document.addEventListener("contextmenu", function (e) { e.preventDefault() }); })();

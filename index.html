@@ -18,25 +18,47 @@
   </header>
 
   <main>
-    <section>
-      <p>Sayfamız yakında hizmetinizde olacaktır.</p>
+    <section class="intro">
+      <h2>Sezgin Kuyumculuk'a Hoş Geldiniz</h2>
+      <p>Altın, takı ve güvenin adresindesiniz. Elazığ'daki mağazamızda ve yakında burada hizmetinizdeyiz.</p>
+    </section>
+
+    <section class="products">
+      <h2>Ürünlerimiz</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="assets/images/bilezik.jpg" alt="22 Ayar Bilezik" />
+          <h3>22 Ayar Bilezik</h3>
+          <p>Güncel fiyat: 14.500₺</p>
+        </div>
+        <div class="product-card">
+          <img src="assets/images/kolye.jpg" alt="Altın Kolye" />
+          <h3>Altın Kolye</h3>
+          <p>Güncel fiyat: 6.200₺</p>
+        </div>
+        <div class="product-card">
+          <img src="assets/images/yuzuk.jpg" alt="Altın Yüzük" />
+          <h3>Altın Yüzük</h3>
+          <p>Güncel fiyat: 3.850₺</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="order-form">
+      <h2>Sipariş veya Bilgi Talebi</h2>
+      <form action="mailto:info@sezginkuyumculuk23.com" method="post" enctype="text/plain">
+        <input type="text" name="isim" placeholder="Adınız" required />
+        <input type="tel" name="telefon" placeholder="Telefon Numaranız" required />
+        <textarea name="talep" placeholder="İstediğiniz ürün veya bilgi" required></textarea>
+        <button type="submit">Gönder</button>
+      </form>
     </section>
   </main>
 
   <footer>
     <p>&copy; 2025</p>
   </footer>
-  <script>
-    (function () {
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I', 'J', 'C', 'U'].includes(e.key.toUpperCase()))) {
-          e.preventDefault();
-          alert('Yetkisiz işlem engellendi.');
-        }
-      });
-      document.addEventListener('contextmenu', function (e) { e.preventDefault() });
-    })();
-  </script>
+  <script src="script.js"></script>
 </body>
 
 </html>
