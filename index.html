@@ -9,9 +9,84 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-Frame-Options" content="DENY" />
   <meta name="referrer" content="no-referrer" />
+  <style>
+    .drawer {
+      position: relative;
+      z-index: 10000;
+    }
+
+    .menu-toggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 1.5rem;
+      background: #800000;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 10001;
+    }
+
+    .drawer-nav {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 220px;
+      height: 100%;
+      background: #fff5f5;
+      border-right: 2px solid #800000;
+      box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+      padding-top: 60px;
+      transition: left 0.3s ease-in-out;
+    }
+
+    .drawer-nav.open {
+      left: 0;
+    }
+
+    .drawer-nav a {
+      display: block;
+      padding: 15px 20px;
+      text-decoration: none;
+      color: #800000;
+      font-weight: 600;
+      border-bottom: 1px solid #e1cfcf;
+    }
+
+    .drawer-nav a:hover {
+      background: #ffeaea;
+    }
+
+    @media (max-width: 600px) {
+      .menu-toggle {
+        top: 10px;
+        left: 10px;
+        font-size: 1.2rem;
+        padding: 8px 12px;
+      }
+
+      .drawer-nav {
+        width: 200px;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="drawer">
+    <button class="menu-toggle" onclick="toggleDrawer()">☰ Menü</button>
+    <nav class="drawer-nav" id="drawerNav">
+      <a href="#">Anasayfa</a>
+      <a href="#">Fiyatlar</a>
+      <a href="#">Ürünler</a>
+      <a href="#">Hakkımızda</a>
+      <a href="#">İletişim</a>
+      <a href="https://wa.me/905555555555" target="_blank">WhatsApp</a>
+      <a href="https://instagram.com/sezginkuyumculuk" target="_blank">Instagram</a>
+    </nav>
+  </div>
   <header>
     <h1>Sezgin Kuyumculuk</h1>
     <p>Altında Güvenin Adı</p>
@@ -59,6 +134,12 @@
     <p>&copy; 2025</p>
   </footer>
   <script>(function () { function e(t) { return ["I", "J", "C", "U"].includes(t.toUpperCase()) } document.addEventListener("keydown", function (t) { ("F12" === t.key || t.ctrlKey && t.shiftKey && e(t.key)) && (t.preventDefault(), alert("Yetkisiz işlem engellendi.")) }), document.addEventListener("contextmenu", function (t) { t.preventDefault() }) })();</script>
+  <script>
+    function toggleDrawer() {
+      const nav = document.getElementById("drawerNav");
+      nav.classList.toggle("open");
+    }
+  </script>
 </body>
 
 </html>
