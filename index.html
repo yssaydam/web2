@@ -225,6 +225,7 @@
             async function kontrolEtVeYenile() {
                 try {
                     const res = await fetch('https://sezginkuyumculuk.com/fiyatlar.json', { cache: "no-store" });
+                    print(res);
                     if (!res.ok) {
                         throw new Error(`Veri kontrol edilemedi (HTTP ${res.status})`);
                     }
@@ -370,24 +371,7 @@
     setInterval(aktifKullanicilariGuncelle, 600000); // 10 dakika
 </script>
  -->
-    <script>
-        (function () {
-            function t(e) { return ["I", "J", "C", "U"].includes(e.toUpperCase()) }
-            document.addEventListener("keydown", function (e) {
-                if (e.key === "F12" || (e.ctrlKey && e.shiftKey && t(e.key))) {
-                    e.preventDefault();
-                    alert("Yetkisiz işlem engellendi.");
-                }
-            });
-            document.addEventListener("contextmenu", function (e) { e.preventDefault() });
-        })();
-    </script>
-    <script>
-        function toggleDrawer() {
-            const nav = document.getElementById("drawerNav");
-            nav.classList.toggle("open");
-        }
-    </script>
+
 </body>
 
 </html>
