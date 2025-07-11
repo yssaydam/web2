@@ -208,10 +208,14 @@
 
             async function veriYukle() {
                 try {
+<<<<<<< HEAD
                     const res = await fetch('https://sezginkuyumculuk.com/fiyatlar.json', { cache: "no-store" });
                     if (!res.ok) {
                         throw new Error(`Veri alınamadı (HTTP ${res.status})`);
                     }
+=======
+                    const res = await fetch('http://116.203.98.213/fiyatlar.json', { cache: "no-store" });
+>>>>>>> bb59fabc8b554f6cb95c0f131f1a5523ed2baa3d
                     const yeniVeri = await res.json();
                     guncelleTablo(yeniVeri);
                     sonVeri = { ...yeniVeri };
@@ -224,10 +228,14 @@
 
             async function kontrolEtVeYenile() {
                 try {
+<<<<<<< HEAD
                     const res = await fetch('https://sezginkuyumculuk.com/fiyatlar.json', { cache: "no-store" });
                     if (!res.ok) {
                         throw new Error(`Veri kontrol edilemedi (HTTP ${res.status})`);
                     }
+=======
+                    const res = await fetch('http://116.203.98.213/fiyatlar.json', { cache: "no-store" });
+>>>>>>> bb59fabc8b554f6cb95c0f131f1a5523ed2baa3d
                     const yeniVeri = await res.json();
                     const veriClone = { ...yeniVeri };
                     delete veriClone.guncellemeZamani;
