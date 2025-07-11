@@ -208,14 +208,10 @@
 
             async function veriYukle() {
                 try {
-<<<<<<< HEAD
                     const res = await fetch('https://sezginkuyumculuk.com/fiyatlar.json', { cache: "no-store" });
                     if (!res.ok) {
                         throw new Error(`Veri alınamadı (HTTP ${res.status})`);
                     }
-=======
-                    const res = await fetch('http://116.203.98.213/fiyatlar.json', { cache: "no-store" });
->>>>>>> bb59fabc8b554f6cb95c0f131f1a5523ed2baa3d
                     const yeniVeri = await res.json();
                     guncelleTablo(yeniVeri);
                     sonVeri = { ...yeniVeri };
@@ -228,42 +224,14 @@
 
             async function kontrolEtVeYenile() {
                 try {
-<<<<<<< HEAD
                     const res = await fetch('https://sezginkuyumculuk.com/fiyatlar.json', { cache: "no-store" });
                     if (!res.ok) {
                         throw new Error(`Veri kontrol edilemedi (HTTP ${res.status})`);
                     }
-=======
-                    const res = await fetch('http://116.203.98.213/fiyatlar.json', { cache: "no-store" });
->>>>>>> bb59fabc8b554f6cb95c0f131f1a5523ed2baa3d
                     const yeniVeri = await res.json();
-                    const veriClone = { ...yeniVeri };
-                    delete veriClone.guncellemeZamani;
-                    if (sonVeri && JSON.stringify(veriClone) !== JSON.stringify(sonVeri)) {
-                        guncelleTablo(yeniVeri);
-
-                        let artan = false;
-                        let azalan = false;
-
-                        Object.entries(yeniVeri).forEach(([tur, fiyat]) => {
-                            const onceki = sonVeri?.[tur];
-                            if (onceki && fiyat?.satış && onceki?.satış) {
-                                const yeni = parseFloat(fiyat.satış.replace(/[^\d,]/g, '').replace(",", "."));
-                                const eski = parseFloat(onceki.satış.replace(/[^\d,]/g, '').replace(",", "."));
-                                if (!isNaN(yeni) && !isNaN(eski)) {
-                                    if (yeni > eski) artan = true;
-                                    if (yeni < eski) azalan = true;
-                                }
-                            }
-                        });
-
-                        if (artan || azalan) {
-                            let mesaj = "📢 Fiyatlar güncellendi";
-                            gosterBildirim(mesaj);
-                        }
-
-                        sonVeri = veriClone;
-                    }
+                    guncelleTablo(yeniVeri);
+                    sonVeri = { ...yeniVeri };
+                    delete sonVeri.guncellemeZamani;
                 } catch (e) {
                     gosterBildirim("Fiyatlar kontrol edilirken hata oluştu.");
                     console.error("HATA:", e);
@@ -328,13 +296,13 @@
         a2hsBtn.style.bottom = '20px';
         a2hsBtn.style.left = '50%';
         a2hsBtn.style.transform = 'translateX(-50%)';
-        a2hsBtn.style.padding = '12px 20px';
-        a2hsBtn.style.fontSize = '1rem';
+        a2hsBtn.style.padding = '22px 40px';
+        a2hsBtn.style.fontSize = '1.6rem';
         a2hsBtn.style.border = 'none';
-        a2hsBtn.style.borderRadius = '30px';
+        a2hsBtn.style.borderRadius = '42px';
         a2hsBtn.style.backgroundColor = '#c89e50';
         a2hsBtn.style.color = '#fff';
-        a2hsBtn.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+        a2hsBtn.style.boxShadow = '0 6px 20px rgba(0,0,0,0.3)';
         a2hsBtn.style.zIndex = '99999';
         a2hsBtn.style.display = 'none';
         document.body.appendChild(a2hsBtn);
