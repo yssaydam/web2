@@ -148,20 +148,20 @@
             let sonVeri = null;
 
             function guncelleTablo(data) {
-                const guncellemeZamani = data.guncellemeZamani;
-                delete data.guncellemeZamani;
+                const guncelleme_zamani = data.guncelleme_zamani;
+                delete data.guncelleme_zamani;
                 const tbody = document.querySelector('#fiyatTablosu tbody');
                 tbody.innerHTML = "";
 
                 Object.entries(data).forEach(([tur, fiyat]) => {
-                    if (typeof fiyat === "object" && fiyat !== null && "alış" in fiyat && "satış" in fiyat) {
+                    if (typeof fiyat === "object" && fiyat !== null && "alis" in fiyat && "satis" in fiyat) {
                         const satir = document.createElement('tr');
 
                         let oncekiFiyat = sonVeri ? sonVeri[tur] : null;
                         let fark = "";
-                        if (oncekiFiyat && fiyat.satış && oncekiFiyat.satış) {
-                            const yeni = parseFloat(fiyat.satış.replace(/[^\d,]/g, '').replace(",", "."));
-                            const eski = parseFloat(oncekiFiyat.satış.replace(/[^\d,]/g, '').replace(",", "."));
+                        if (oncekiFiyat && fiyat.satis && oncekiFiyat.satis) {
+                            const yeni = parseFloat(fiyat.satis.replace(/[^\d,]/g, '').replace(",", "."));
+                            const eski = parseFloat(oncekiFiyat.satis.replace(/[^\d,]/g, '').replace(",", "."));
                             if (!isNaN(yeni) && !isNaN(eski)) {
                                 if (yeni > eski) {
                                     fark = " <span class='fark-ok green-ok'>↑</span>";
@@ -173,16 +173,16 @@
 
                         satir.innerHTML = `
                         <td data-label="Tür">${tur}</td>
-                        <td data-label="Alış">${fiyat.alış}</td>
-                        <td data-label="Satış">${fiyat.satış}${fark}</td>
+                        <td data-label="Alış">${fiyat.alis}</td>
+                        <td data-label="Satış">${fiyat.satis}${fark}</td>
                     `;
                         tbody.appendChild(satir);
                     }
                 });
 
-                if (guncellemeZamani) {
+                if (guncelleme_zamani) {
                     document.getElementById("guncellemeZamani").textContent =
-                        "Son Güncelleme: " + guncellemeZamani;
+                        "Son Güncelleme: " + guncelleme_zamani;
                 } else {
                     document.getElementById("guncellemeZamani").textContent =
                         "Son Güncelleme: Bilinmiyor";
@@ -215,7 +215,7 @@
                     const yeniVeri = await res.json();
                     guncelleTablo(yeniVeri);
                     sonVeri = { ...yeniVeri };
-                    delete sonVeri.guncellemeZamani;
+                    delete sonVeri.guncelleme_zamani;
                 } catch (err) {
                     gosterBildirim("Veri alınamadı. Lütfen daha sonra tekrar deneyin.");
                     console.error("HATA:", err);
@@ -231,7 +231,7 @@
                     const yeniVeri = await res.json();
                     guncelleTablo(yeniVeri);
                     sonVeri = { ...yeniVeri };
-                    delete sonVeri.guncellemeZamani;
+                    delete sonVeri.guncelleme_zamani;
                 } catch (e) {
                     gosterBildirim("Fiyatlar kontrol edilirken hata oluştu.");
                     console.error("HATA:", e);
